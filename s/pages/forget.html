@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>忘记密码</title>
+	<link rel="stylesheet" href="">
+	<style>
+	body{
+			background: #fff;
+			text-align: center
+		}
+		#forget{
+			width: 60px;
+			height: 30px;
+			border: 1px solid #ccc;
+			padding: 5px;
+			text-align: center
+		}
+		.flex{
+			display: flex
+		}
+	</style>
+</head>
+<body>
+	<div id="close">X</div>
+	<h1>忘记密码</h1>
+	<div>
+		密码:
+		<input type="text">
+	</div>
+	<div class="flex">
+		<div id="forget">确定</div>
+	</div>
+</body>
+<script>
+	function privateFunSent(data){
+	    parent.postMessage(data,'*');
+	}
+	document.getElementById("forget").onclick = function(event) {
+		console.log("点击忘记密码")
+	};
+	document.getElementById("close").onclick = function(event) {
+		privateFunSent({funName:'CLOSE'})
+	};
+</script>
+</html>

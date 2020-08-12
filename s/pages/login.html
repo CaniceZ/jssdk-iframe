@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>登录</title>
+	<link rel="stylesheet" href="">
+	<style>
+	body{
+			background: #fff;
+			text-align: center
+		}
+		#login{
+			width: 60px;
+			height: 30px;
+			border: 1px solid #ccc;
+			padding: 5px;
+			text-align: center
+		}
+		.flex{
+			display: flex
+		}
+	</style>
+</head>
+<body>
+	<h1>登录</h1>
+	<div>
+		账号:
+		<input type="text">
+	</div>
+	<div>
+		密码:
+		<input type="text">
+	</div>
+	<div class="flex">
+		<div id="login">登录</div>
+		<div id="forget">忘记密码</div>
+	</div>
+</body>
+<script>
+	function login(userName,password) {
+		var data  = {
+			param: {userName: userName, password: password},
+			funName: "LOGIN"
+		}
+		privateFunSent(data)
+	}	
+	function privateFunSent(data){
+	    parent.postMessage(data,'*');
+	}
+	document.getElementById("login").onclick = function(event) {
+		console.log("点击登录")
+		login('小强','a123456')
+	};
+	document.getElementById("forget").onclick = function(event) {
+		location.href = "forget.html"
+	};
+</script>
+</html>
