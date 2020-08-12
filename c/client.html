@@ -22,9 +22,11 @@
 	<h2>游戏ifream</h2>
 	<div id="login">登录</div>
 	<div id="getUserName">获取账号信息</div>
+	<div id="getUserName2">获取账号信息2</div>
 </body>
 <script>
-var callbackFun;
+// jssdk开始
+	var callbackFun;
 	var mlSdk = {
 		login: function(userName,password) {
 			var data  = {
@@ -40,21 +42,19 @@ var callbackFun;
 				funName: "GETUSERNAME"
 			}
 			privateFunSent(data)
+		},
+		getUserName2: function(callback) {
+			callbackFun = callback
+			var data  = {
+				// param: {userName: userName, password: password},
+				funName: "GETUSERNAME2"
+			}
+			privateFunSent(data)
 		}
 	}
 	function privateFunSent(data){
 	    parent.postMessage(data,'*');
 	}
-	document.getElementById("login").onclick = (function(event) {
-		console.log("点击登录")
-		mlSdk.login('小强','a123456')
-	});
-	document.getElementById("getUserName").onclick = (function(event) {
-		console.log("点击获取账号信息")
-		mlSdk.getUserName(function(res){
-			console.log('拿到sdk回调回来的数据：'res)
-		})
-	});
 	// 监听返回
 	window.addEventListener('message', function(messageEvent) {
 		if('function' == typeof(callbackFun)){
@@ -63,5 +63,25 @@ var callbackFun;
 			callbackFun='';//回调完销毁
 		}
 	});
+
+// jssdk结束
+
+	document.getElementById("login").onclick = (function(event) {
+		console.log("点击登录")
+		mlSdk.login('小强','a123456')
+	});
+	document.getElementById("getUserName").onclick = (function(event) {
+		console.log("点击获取账号信息")
+		mlSdk.getUserName(function(res){
+			console.log('拿到sdk回调回来的数据：' +JSON.stringify(res))
+		})
+	});
+	document.getElementById("getUserName2").onclick = (function(event) {
+		console.log("点击获取账号信息2")
+		mlSdk.getUserName2(function(res){
+			console.log('拿到sdk回调回来的数据2：' +JSON.stringify(res))
+		})
+	});
+
 </script>
 </html>

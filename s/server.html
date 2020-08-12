@@ -55,6 +55,9 @@ document.querySelector("#sdkPage").src = "/s/pages/login.html"
         	case 'GETUSERNAME':
         		sendUserName()
         	break;
+        	case 'GETUSERNAME2':
+        		sendUserName2()
+        	break;
         	case 'CLOSE':
         		closeSdkFrame()
         	break;
@@ -71,7 +74,12 @@ document.querySelector("#sdkPage").src = "/s/pages/login.html"
       }
        function sendUserName(){
       	console.log("给iframe发送用户信息")
+      	console.log(window.frames)
       	window.frames[0].postMessage({retFun:'USERNAME',data:{name:123}},'*')
+      }
+      function sendUserName2(){
+      	console.log("给iframe发送用户信息2")
+      	window.frames[0].postMessage({retFun:'USERNAME2',data:{name:1234}},'*')
       }
       function closeSdkFrame(){
       	console.log("关闭sdk页面")
