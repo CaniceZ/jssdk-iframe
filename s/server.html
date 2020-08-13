@@ -37,7 +37,7 @@
 		<div id="login">登录</div>
 	</div> -->
 	<iframe id="gamePage" src="http://127.0.0.1:8080/c/client.html" frameborder="0" width="750px" height="100%"></iframe>
-	<iframe id="sdkPage" src="" width="750px" height="100%" frameborder="0"></iframe>
+	<iframe id="sdkPage" src="" width="750px" height="100%" frameborder="0"></iframe>	
 </body>
 <script>
 document.querySelector("#sdkPage").src = "/s/pages/login.html"
@@ -57,6 +57,7 @@ document.querySelector("#sdkPage").src = "/s/pages/login.html"
         	break;
         	case 'GETUSERNAME2':
         		sendUserName2()
+        		closeGameFrame()
         	break;
         	case 'CLOSE':
         		closeSdkFrame()
@@ -85,6 +86,11 @@ document.querySelector("#sdkPage").src = "/s/pages/login.html"
       	console.log("关闭sdk页面")
       	document.querySelector("#gamePage").style.display = "block"
       	document.querySelector("#sdkPage").style.display = "none"
+      }
+      function closeGameFrame(){
+      	console.log("关闭游戏页面")
+      	document.querySelector("#gamePage").style.display = "none"
+      	document.querySelector("#sdkPage").style.display = "block"
       }
 </script>
 </html>

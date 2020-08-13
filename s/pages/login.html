@@ -26,11 +26,11 @@
 	<h1>登录</h1>
 	<div>
 		账号:
-		<input type="text">
+		<input id="userName" type="text">
 	</div>
 	<div>
 		密码:
-		<input type="text">
+		<input id="password" type="password">
 	</div>
 	<div class="flex">
 		<div id="login">登录</div>
@@ -50,7 +50,9 @@
 	}
 	document.getElementById("login").onclick = function(event) {
 		console.log("点击登录")
-		login('小强','a123456')
+		var userName = document.getElementById("userName").value
+		var password = document.getElementById("password").value
+		login(userName,password)
 	};
 	document.getElementById("forget").onclick = function(event) {
 		location.href = "forget.html"
